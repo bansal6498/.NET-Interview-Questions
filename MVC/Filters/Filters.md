@@ -1,4 +1,4 @@
-### HTTP Filters
+### <span style="background-color:#ffb84d; color:white; padding:2px 6px; border-radius:4px;">Medium</span> HTTP Filters
 HTTP Filters in ASP.NET Core allow you to intercept HTTP requests and responses at various stages of the pipeline. They can be used to perform actions such as logging, exception handling, authentication, and more. 
 <br>
 In ASP.NET Core, filters are used to run code before or after the execution of controller actions. Filters are powerful tools for handling cross-cutting concerns such as logging, exception handling, authorization, caching, and more. Filters allow for better separation of concerns and can be applied globally, at the controller level, or at the action level.
@@ -77,7 +77,7 @@ public IActionResult GetProduct()
  return View();
 }
 ```
-### Order of Execution of Filters
+### <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> Order of Execution of Filters
 The filters in ASP.NET Core follow a specific order of execution, which determines when they will be executed during the request-response cycle:
 1. Authorization Filters (run first)
 2. Resource Filters

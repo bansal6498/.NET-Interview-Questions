@@ -1,4 +1,4 @@
-###  🟧 MAGIC TABLES
+##  <span style="background-color:#ffb84d; color:white; padding:2px 6px; border-radius:4px;">Medium</span> MAGIC TABLES
 Magic Tables are special, virtual tables that SQL Server internally maintains during `INSERT, UPDATE, or DELETE` operations. They are not physical tables but can be used in triggers to access the data affected by these operations. These tables are called INSERTED and DELETED. 
 **Scenarios Where Magic Tables Are Used**
 - Triggers: Magic tables are most used in triggers to track changes in the data during `INSERT, UPDATE, or DELETE` operations
