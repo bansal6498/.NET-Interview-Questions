@@ -47,15 +47,17 @@ Apply filter Globally:
 You can apply the filter globally, at the controller level, or at the action level. This is ideal for scenarios where a filter, such as exception handling, needs to be applied to all requests.
 <br>
 To apply globally in `Startup.cs`:
-`public void ConfigureServices(IServiceCollection services)
+```csharp
+public void ConfigureServices(IServiceCollection services)
 {
     services.AddControllersWithViews(options =>
     {
         options.Filters.Add(new LoggingActionFilter());
         options.Filters.Add(new CustomActionFilter());
     });
-}`
-<br>
+}
+```
+
 Apply filter At the Controller Level:
 Filters can be applied to all actions within a specific controller by adding them as attributes on the controller class.
 `[ServiceFilter(typeof(CustomActionFilter))]
