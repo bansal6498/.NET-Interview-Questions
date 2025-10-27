@@ -1,4 +1,4 @@
-###HTTP Filters
+### HTTP Filters
 <br>
 HTTP Filters in ASP.NET Core allow you to intercept HTTP requests and responses at various stages of the pipeline. They can be used to perform actions such as logging, exception handling, authentication, and more. 
 <br>
@@ -16,16 +16,13 @@ Example:
 <br>
 **Exception Filters:** Handle exceptions thrown by an action method. You can use them to log exceptions or return custom error responses.
 Example: 
-```csharp
-OnException
+`OnException`
 <br>
 **Authorization Filters:** Used to determine whether a user has the necessary permissionsto execute the action.
 Example: 
-```csharp
-IAuthorizationFilter
+`IAuthorizationFilter`
 <br>
 **Resource Filters:** Executed before any other filters, can be used to perform tasks like caching.
 Example: 
-```csharp
-OnResourceExecuting and OnResourceExecuted
+`OnResourceExecuting and OnResourceExecuted`
 <br>
