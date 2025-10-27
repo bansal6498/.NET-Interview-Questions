@@ -29,7 +29,8 @@ Example:
 Filters can be implemented as attributes or by using the `IActionFilter` and `IExceptionFilter` interfaces.
 
 Example of Action Filter:
-`public class LoggingActionFilter : IActionFilter
+```csharp
+public class LoggingActionFilter : IActionFilter
 {
     public void OnActionExecuting(ActionExecutingContext context)
     {
@@ -39,7 +40,8 @@ Example of Action Filter:
     {
         Console.WriteLine("Action has executed");
     }
-}`
+}
+```
 <br>
 Apply filter Globally:
 You can apply the filter globally, at the controller level, or at the action level. This is ideal for scenarios where a filter, such as exception handling, needs to be applied to all requests.
