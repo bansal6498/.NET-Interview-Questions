@@ -1,0 +1,2 @@
+**Question-** How do you ensure clean, efficient, and maintainable code?
+**Answer-** "I follow coding best practices, such as writing clear and concise code, adhering to namingconventions, and keeping functions and classes small and focused on a single responsibility. I also perform code reviews and use static code analysis tools to detect potential issues. Proper documentation and writing unit tests also help in maintaining code quality."

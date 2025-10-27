@@ -27,8 +27,8 @@ Example:
 <br>
 ### How to implement Filter in ASP.NET Core
 Filters can be implemented as attributes or by using the `IActionFilter` and `IExceptionFilter` interfaces.
-
 Example of Action Filter:
+
 ```csharp
 public class LoggingActionFilter : IActionFilter
 {
@@ -47,6 +47,7 @@ Apply filter Globally:
 You can apply the filter globally, at the controller level, or at the action level. This is ideal for scenarios where a filter, such as exception handling, needs to be applied to all requests.
 <br>
 To apply globally in `Startup.cs`:
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -60,15 +61,16 @@ public void ConfigureServices(IServiceCollection services)
 
 Apply filter At the Controller Level:
 Filters can be applied to all actions within a specific controller by adding them as attributes on the controller class.
-`[ServiceFilter(typeof(CustomActionFilter))]
+```csharp
+[ServiceFilter(typeof(CustomActionFilter))]
 public class HomeController : Controller
 {
     // All actions in this controller will use CustomActionFilter
-}`
-<br>
+}
+```
 Apply filter At the Action Level:
 Filters can be applied to a specific action method by adding them as attributes on that action.
-`
+```csharp
 [HttpGet]
 [ServiceFilter(typeof(CustomActionFilter))]
 public IActionResult GetProduct()
@@ -76,8 +78,7 @@ public IActionResult GetProduct()
  // This action will use CustomActionFilter
  return View();
 }
-`
-<br>
+```
 ### Order of Execution of Filters
 The filters in ASP.NET Core follow a specific order of execution, which determines when they will be executed during the request-response cycle:
 1. Authorization Filters (run first)
@@ -86,3 +87,8 @@ The filters in ASP.NET Core follow a specific order of execution, which determin
 4. Result Filters
 5. Exception Filters (if an exception occurs)
 
+**Question-**Can you apply multiple filters to a single action in ASP.NET Core?
+<br>
+**Answer-** Yes, multiple filters can be applied to an action either globally, at the controller level, or at the action level using attributes.
+<br>
+*Question-**
