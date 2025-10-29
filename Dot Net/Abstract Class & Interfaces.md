@@ -28,6 +28,7 @@ An abstract class is a class that cannot be instantiated directly. It can contai
 -   When you want to provide default behavior for some methods but leave others to be implemented by derived classes.
 -   When you want to define a common base class for a family of related objects, especially if you plan to share some implementation across all subclasses.
 <br>
+
 🟥 **High Priority**
 ## Interfaces
 An interface defines a contract, meaning it only defines method signatures and properties but no implementation. Any class that implements an interface must provide an implementation for all of its methods.
@@ -154,6 +155,7 @@ An abstract class can have both defined methods and abstract methods (without im
 In C#, both abstract classes and interfaces are used to define methods or properties that must
 be implemented by derived classes. However, they serve different purposes and have different
 characteristics.
+
 |Feature | Abstract Class | Interface|
 |---------|---------------|-----------|
 |**Implementation**| Can have both abstract and concrete methods. | Can only have method signatures, no implementation. |
