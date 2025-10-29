@@ -4,7 +4,7 @@ An abstract class is a class that cannot be instantiated directly. It can contai
 ### Characteristics of Abstract Class:
 1. Can have both abstract and concrete methods:
 -   An abstract method is a method without implementation, while a concrete method can have an implementation.
-    ### 🧩 Example
+    #### 🧩 Example
     ```csharp
     public abstract class Animal
     {
@@ -28,12 +28,11 @@ An abstract class is a class that cannot be instantiated directly. It can contai
 -   When you want to provide default behavior for some methods but leave others to be implemented by derived classes.
 -   When you want to define a common base class for a family of related objects, especially if you plan to share some implementation across all subclasses.
 <br>
-
 🟥 **High Priority**
 ## Interfaces
 An interface defines a contract, meaning it only defines method signatures and properties but no implementation. Any class that implements an interface must provide an implementation for all of its methods.
 <br>An interface in C# is a contract that defines a set of methods, properties, events, or indexers without providing implementations. A class or struct that implements the interface must provide the implementation for its members.
-### 🧩 Example
+#### 🧩 Example
 
 Syntax
 
@@ -54,7 +53,7 @@ public interface IMyInterface
 ### Characteristics of Interface:
 1.  Contains only method signatures (no implementation):
 -   Interfaces cannot provide method implementations, only method declarations.
-### 🧩 Example
+#### 🧩 Example
 ```csharp
 public interface IAnimal
 {
@@ -69,7 +68,7 @@ public interface IAnimal
 -   All members of an interface are implicitly public, and they cannot have any access modifiers.
 5.  No state:
 -   Interfaces cannot maintain any state (i.e., no instance fields).
-### 🧩 Steps to implement Interface:
+#### 🧩 Steps to implement Interface:
 
 1.  Defining the Interface:
 
@@ -81,7 +80,7 @@ public interface IVehicle
  int GetNumberOfWheels();
 }
 ```
-### 🧩 Example
+#### 🧩 Example
 
 2. Implementing an Interface in a Class:
 
@@ -102,7 +101,7 @@ public class Car : IVehicle
  }
 }
 ```
-### 🧩 Example
+#### 🧩 Example
 
 3.  Using the Interface:
 ```csharp
@@ -117,7 +116,7 @@ public class Program
  }
 }
 ```
-### 🧩 Example
+#### 🧩 Example
 
 Example with Multiple Interfaces:
 
@@ -152,7 +151,6 @@ An abstract class can have both defined methods and abstract methods (without im
 -   A class can implement multiple interfaces, but it can inherit only one abstract class.
 -   Abstract classes can have fields and constructors, while interfaces cannot.
 -   Abstract classes can provide implementation, while interfaces cannot (in versions prior to C# 8.0, where default implementations were introduced).<br>
-
 In C#, both abstract classes and interfaces are used to define methods or properties that must
 be implemented by derived classes. However, they serve different purposes and have different
 characteristics.
