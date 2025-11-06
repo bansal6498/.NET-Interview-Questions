@@ -77,3 +77,8 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 | When it runs | Runs once during app startup (before the application starts processing requests). | Runs during every HTTP request (after services are configured). |
 | Common Use cases |Add services for DI (e.g., MVC, Entity Framework, custom services). <br> Configure authentication, authorization, and logging. | Configure middleware (e.g., routing, static files, error handling, authentication).<br>Define the app's behavior for handling requests. |
 | Example | `services.AddDbContext<MyDbContext>();`<br>`services.AddAuthentication();` | `app.UseRouting();`<br>`app.UseStaticFiles();` |
+| Access | Access to the IServiceCollection to register services. | Access to the IApplicationBuiler to configure middleware. |
+### Flow of Execution
+1.  `ConfigureServices` is called during the startup process to register services with the DI container.
+2.  After `ConfigureServices`, `Configure` is called to set up the application's middleware pipeline.
+3.  The middleware defined in the `configure` processes incoming HTTP requests and outgoing `responses`.
