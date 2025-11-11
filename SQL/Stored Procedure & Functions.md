@@ -1,4 +1,4 @@
-## <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> STORED PROCEDURE 
+## STORED PROCEDURE 
 Stored procedures in Oracle are precompiled SQL code that is stored in the database and can be executed on demand. They are used to encapsulate business logic and improve performance by reducing the amount of data transferred between the application and the database.
 
 ### Stored Procedure vs Functions
