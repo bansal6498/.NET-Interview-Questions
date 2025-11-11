@@ -1,15 +1,21 @@
 ## Basic
+#### What experience do you have with C# and .NET? Can you describe a project where you used them?
+**Answer:**
+"I have worked extensively with C# and .NET, including .NET Core, in developing various enterprise-level applications. In one project, I developed a web application using ASP.NET Core MVC, where I implemented complex business logic using C# and integrated it with an Oracledatabase. I also created APIs using Web API, ensuring they followed best practices for performance and security."
+#### How do you implement security in .NET Core applications?
+**Answer:**
+Security can be implemented in .NET Core applications by using: • Authentication: Verify the identity of users via JWT tokens, cookie-based authentication, or third-party providers like OAuth. • Authorization: Use role-based or policy-based authorization to control access to application.
+#### What is your experience with APIs, and how do you test them?
+**Answer:**
+"I have developed RESTful APIs using ASP.NET Core Web API, and I ensure they are welldocumented using tools like Swagger. I test APIs using Postman, where I write test cases to check for expected responses, status codes, and error handling. I also use unit tests to ensure API controllers function as expected."
+#### Describe your experience with Agile methodologies and working in an onshore/offshore model.
+**Answer:**
+"I have worked in Agile environments, where we use Scrum or Kanban to manage sprints and tasks. In the onshore/offshore model, I have collaborated with both onshore teams and offshore developers. We used tools like JIRA for tracking progress, and I was involved in daily standups, sprint planning, and code reviews to ensure alignment between teams."
 ### Hard Binding vs Loose Binding
 -   **Hard Binding**: This refers to a strong coupling between components. One component explicitly depends on the other, and changes to one will likely require changes to the other. It’s common in traditional development where dependencies are tightly coupled.<br>
 Example: A method directly calls another method within the same class.
 -   **Loose Binding**: This refers to a weak coupling between components. One component can function without knowing about the other’s internal details. It allows for more flexible, maintainable, and scalable systems.<br>
 Example: Using interfaces or dependency injection to decouple classes.
-### Memory Management in DotNet
--   .NET uses Automatic Memory Management to handle memory allocation and deallocation.
--   **Heap**: The heap is used for dynamically allocated objects. When an object is created, it is allocated in the heap.
--   **Stack**: The stack is used for method calls and local variables.
--   **Garbage** Collection (GC): .NET uses garbage collection to automatically reclaim memory by removing objects that are no longer in use. The garbage collector identifies unused objects and frees their memory, preventing memory leaks.
--   Generational Approach: .NET GC divides objects into generations (0, 1, and 2) based on their lifetimes. Short-lived objects are collected more frequently, while long-lived objects are collected less frequently.
 ### ENUM
 **Enums** (short for **Enumerations**) are a special data type in C# that allows you to define a set of named constants. They are used to represent a collection of related values in a more readable and maintainable way.
 #### 🧩 Example
@@ -17,9 +23,9 @@ SYNTAX- Here, Day is an enumeration, and its values (Sunday, Monday, etc.) are c
 ```csharp
 enum Day
 {
-Sunday,
-Monday,
-Tuesday,
+    Sunday,
+    Monday,
+    Tuesday,
 }
 ```
 -   Key Points:
@@ -92,7 +98,7 @@ class Program
     {
         int num;
         GetNumber(out num); // The value of num is assigned inside the method
-    Console.WriteLine(num); // Output: 42
+        Console.WriteLine(num); // Output: 42
     }
 }
 ```
@@ -163,7 +169,29 @@ public MyClass(int limit)
 | **Purpose** | To return a value from a method | To pass a value by reference | To define a constant value | To let the compiler infer the variable type |
 | **Value Change**| Must be assigned in method | Can be modified in method | Cannot be changed once assigned | Can change the value but type is fixed | 
 | **Typical Use Case** | Returning multiple values from a method | Passing large objects or modifying values | Defining constant values like Pi, or mathematical constants | When the type is obvious from the initializer |
-
-
-
+### Serialization and Deserialization
+Serialization converts an object into a storable/transmittable format, while deserialization reverts it back into an object.
+### Array vs ArrayList
+#### Arrays
+-   Fixed-size collection of elements of the same type.
+-   It cannot grow or shrink in size after initialization.
+-   Best for storing a fixed set of elements.
+#### 🧩 Example
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+Console.WriteLine(numbers[0]); // Output: 1
+```
+#### ArrayList
+-   A dynamic collection that can grow and shrink in size.
+-   It can hold elements of any type (though it is commonly used with object type).
+-   Introduced in the older versions of .NET but replaced by List<T> in newer versions.
+#### 🧩 Example
+```csharp
+ArrayList arrayList = new ArrayList();
+arrayList.Add(1);
+arrayList.Add("Hello");
+arrayList.Add(true);
+Console.WriteLine(arrayList[0]); // Output: 1
+Console.WriteLine(arrayList[1]); // Output: Hello
+```
 

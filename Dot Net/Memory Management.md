@@ -1,5 +1,10 @@
 ## Memory Management
 Memory management in .NET Core is automatically handled by the **Garbage Collector (GC)**, which is responsible for leaning up unused objects and reclaiming memory. However, improper memory management can still lead to **memory leaks.**
+-   .NET uses Automatic Memory Management to handle memory allocation and deallocation.
+-   **Heap**: The heap is used for dynamically allocated objects. When an object is created, it is allocated in the heap.
+-   **Stack**: The stack is used for method calls and local variables.
+-   **Garbage** Collection (GC): .NET uses garbage collection to automatically reclaim memory by removing objects that are no longer in use. The garbage collector identifies unused objects and frees their memory, preventing memory leaks.
+-   Generational Approach: .NET GC divides objects into generations (0, 1, and 2) based on their lifetimes. Short-lived objects are collected more frequently, while long-lived objects are collected less frequently.
 ### How Garbage Collection Works?
 -   The garbage collector runs automatically to clean up unreferenced objects, freeing up memory.
 -   .NET Core uses a **generational garbage collection model** (Young Generation, Old Generation), where most objects are allocated in the young generation, and older objects are promoted to the old generation.
