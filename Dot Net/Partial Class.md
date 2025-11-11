@@ -40,4 +40,9 @@ class Program
     }
 }
 ```
+**Summary**
+-   Allows splitting a class into multiple files.
+-   Useful for large classes, auto-generated code, and collaboration.
+-   The class can be extended and modified in separate files, maintaining clean code.</br>
 
+By using both partial classes and extension methods, you can write clean, maintainable, and extensible code, and enhance your existing types without modifying their source code.
