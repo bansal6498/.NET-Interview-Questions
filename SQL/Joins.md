@@ -9,10 +9,7 @@
 **INNER JOIN vs OUTER JOIN**
 - INNER JOIN: Returns only the rows where there is a match in both tables.
 - OUTER JOIN: Returns all rows from one table and the matched rows from the other table. 
-<br>
-
-    If there is no match, NULL values are returned for columns of the table that has no match.
-<br>
+    -   If there is no match, NULL values are returned for columns of the table that has no match.
 
 **SYNTAX**
 ```sql 
