@@ -1,4 +1,3 @@
-<span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span>
 | Feature | var | let |
 |---------|---------|------------|
 | **Scope**| Function Scoped | Block Scoped |

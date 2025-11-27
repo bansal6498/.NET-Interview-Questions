@@ -1,5 +1,5 @@
-## <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> Design Pattern
--   <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> **Singleton Pattern**: Ensures that a class has only one instance and provides a global point of access.
+## Design Pattern
+-   **Singleton Pattern**: Ensures that a class has only one instance and provides a global point of access.
 -   **Factory Pattern**: Defines an interface for creating an object, but allows subclasses to alter the type of created objects.
 -   **Observer Pattern**: Used to allow a subject to notify its observers of changes, typically used in event-driven programming.
 -   **Decorator Pattern**: Allows functionality to be added to an object dynamically.

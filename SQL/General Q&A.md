@@ -14,7 +14,7 @@ HAVING COUNT(*) > 5;
 -   The `SELECT` statement is used to query data from one or more tables in a database. It retrieves specified columns from the database table. It can be used to fetch specific columns or rows based on a condition.
 -   The `SELECT ALL` is actually the default behavior in SQL. It retrieves all records from the specified columns or tables without removing duplicates. This is redundant as SELECT by default retrieves all rows and columns, including duplicates.
 ## NULL Value in SQL
-NULL: Represents the absence of a value or unknown data. It is not the same as an empty string or zero.
+**NULL:** Represents the absence of a value or unknown data. It is not the same as an empty string or zero.
 -   Empty String: A string with no characters (''), but still exists as a value.
 -   Zero: A numeric value representing 0, a valid number.
 ## Primary Key in SQL
@@ -56,7 +56,7 @@ CREATE TABLE products (
 );
 ```
 ## GROUP BY
-The `GROUP BY` clause is used to arrange identical data into groups. It is typically used with aggregate functions (COUNT(), SUM(), AVG(), etc.) to perform calculations on each group.
+The `GROUP BY` clause is used to arrange identical data into groups. It is typically used with aggregate functions (`COUNT(), SUM(), AVG(),` etc.) to perform calculations on each group.
 
 **SYNTAX**
 ```sql

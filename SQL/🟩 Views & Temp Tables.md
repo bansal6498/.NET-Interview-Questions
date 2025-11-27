@@ -1,7 +1,8 @@
-## <span style="background-color:#ffb84d; color:white; padding:2px 6px; border-radius:4px;">Medium</span> Views
+## Views
 A view is a virtual table that provides a way to represent data from one or more tables. It is stored as a query and does not hold data but rather provides a way to access it in a specific format.
 <br>
-<span style="background-color:#4caf50; color:white; padding:2px 6px; border-radius:4px;">Low</span> Can you update a view in SQL? If so, explain the conditions under which a view is updatable.
+#### Can you update a view in SQL? If so, explain the conditions under which a view is updatable.
+**Answer:**
 Yes, you can update a view, but there are some conditions under which a view is updatable:
 - The view must directly reference one table (not multiple tables).
 - It should not contain aggregate functions (SUM(), AVG(), etc.).
@@ -20,7 +21,7 @@ WHERE employee_id = 101;
 ```
 Explanation: The EmployeeView can be updated if it satisfies the conditions mentioned. In this case, we update the salary of employee 101.
 
-### <span style="background-color:#4caf50; color:white; padding:2px 6px; border-radius:4px;">Low</span> Indexed Views
+### Indexed Views
 An **Indexed View** (also called a Materialized View) is a view that has a unique clustered index created on it. This allows the view to store the result set physically and improves performance for complex queries that reference the view frequently.
 
 **Usage**: Indexed views are useful when you have complex calculations or aggregations and want to improve query performance by storing the precomputed results.
@@ -46,7 +47,7 @@ A temporary table is a table that is created and exists for the duration of a se
 CREATE TEMPORARY TABLE TempEmployees AS SELECT * FROM employees WHERE department_id = 1;
 ```
 
-### <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> Temporary Tables vs Views
+### Temporary Tables vs Views
 What is the difference between TEMPORARY tables and VIEWS in SQL?
 - Temporary tables hold actual data, while views only store the query definition.
 - Temporary tables exist until the session ends or the table is dropped, while views remain in the database unless dropped.
