@@ -114,5 +114,5 @@ public class MyController : ControllerBase
 #### What is the difference between AllowAnyOrigin() and WithOrigins() in CORS policy?
 **Answer:**
 `AllowAnyOrigin()` allows all domains to access the resource, whereas `WithOrigins("https://frontend.com")` specifies a particular domain that is allowed to access the resource.
-### Conslusion
+### Conclusion
 CORS is a critical aspect of web security that helps manage cross-origin requests. It ensures that only trusted origins can access resources, preventing unauthorized access. In ASP.NET Core, CORS is configured easily through the Startup.cs file.
