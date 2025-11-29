@@ -1,31 +1,3 @@
-### Explain Object Call Bind in Angular
-In Angular, Object Binding typically refers to **two-way binding** or **one-way binding**.
--   **One-way binding**: Data flows in one direction, either from the component to the view (`{{expression}}` in the template) or from the view to the component (`[(ngModel)]` for forms).
-#### 🧩 Example
-```html
-<div>{{ name }}</div> <!-- One-way data binding -->
-```
--   **Two-way binding:** This allows data to flow in both directions: from the component to the view, and from the view to the component. This is achieved using the ngModel directive.
-#### 🧩 Example
-```html
-<input [(ngModel)]="name" /> <!-- Two-way data binding -->
-```
-### Binding in Angular:
--   **Property Binding:** Binds properties of HTML elements to component properties.
-#### 🧩 Example
-```html
-<img [src]="imageUrl" />
-```
--   **Event Binding:** Binds an event to a method.
-#### 🧩 Example
-```html
-<button (click)="handleClick()">Click Me</button>
-```
--   **Two-way Binding:** Combines property and event binding for form elements like inputs.
-#### 🧩 Example
-```html
-<input [(ngModel)]="name" />
-```
 ### ng run vs ng build vs ng serve
 | 🔹 **Feature** | **ng run** | **ng build** | **ng serve** |
 |----------------|----------------|----------------| ---------------|
