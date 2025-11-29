@@ -1,3 +1,0 @@
-highp
-highp
-highp   
