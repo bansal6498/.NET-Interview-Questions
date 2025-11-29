@@ -1,0 +1,2 @@
+## Entity Framework
+Entity Framework (EF) is an Object-Relational Mapper (ORM) that allows developers to interact with a database using C# objects instead of writing raw SQL queries. It abstracts the database interactions and provides methods to query, insert, update, and delete data. EF supports both code-first and database-first approaches. EF Core is the lightweight, cross-platform version of EF, typically used with .NET Core.
