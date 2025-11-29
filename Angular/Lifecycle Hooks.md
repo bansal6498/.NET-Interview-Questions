@@ -67,3 +67,12 @@ ngOnDestroy(): void {
     console.log('Component destroyed');
 }
 ```
+#### What is the lifecycle of a directive in Angular?
+**Answer:**
+The lifecycle of a directive is similar to that of a component. The main lifecycle hooks for a directive are:
+-   **ngOnChanges:** Called when the directive’s input properties change.
+-   **ngOnInit**: Called once the directive is initialized.
+-   **ngDoCheck**: Called to check for changes in the directive.
+-   **ngAfterViewInit**: Called after the directive's view has been initialized.
+-   **ngOnDestroy**: Called when the directive is destroyed.</br>
+These lifecycle hooks help manage the behaviour of the directive and react to changes in input properties, view initialization, and cleanup.
