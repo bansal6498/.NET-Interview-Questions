@@ -17,9 +17,6 @@ To create a custom directive in Angular:
 2. In the directive class, use the `@Directive` decorator to specify the directive’s selector.
 3. Implement the required logic using lifecycle hooks like `ngOnInit`, `ngOnChanges`, or `ngAfterViewInit`.
 #### 🧩 Example
-
-Explain
-
 ```ts
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 @Directive({
@@ -66,7 +63,7 @@ A structural directive is applied to an element by prefixing it with an asterisk
 ```
 #### What is the purpose of ng-template in structural directives?
 **Answer:**
-`ng-template` is used in Angular to define a block of HTML that can be conditionally rendered or used by structural directives such as *ngIf or `*ngFor`. It is a way to define content that is not rendered immediately but can be inserted into the DOM when required.
+`ng-template` is used in Angular to define a block of HTML that can be conditionally rendered or used by structural directives such as `*ngIf` or `*ngFor`. It is a way to define content that is not rendered immediately but can be inserted into the DOM when required.
 ```html
 <ng-template [ngIf]="isVisible">
 <div>This content is conditionally displayed based on isVisible.</div>
