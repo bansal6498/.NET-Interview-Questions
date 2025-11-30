@@ -109,7 +109,7 @@ WHERE employee_name LIKE 'J%';
 ```
 **Explanation**: The `LIKE` operator is used for pattern matching. The `%` symbol represents any sequence of characters, so this query returns all employees whose name starts with the letter "J".
 
-12. <span style="background-color:#ff4d4d; color:white; padding:2px 6px; border-radius:4px;">High</span> Retrieve employees who have the same manager. Assume manager_id is a foreign key referencing employee_id.
+12.🟥 Retrieve employees who have the same manager. Assume manager_id is a foreign key referencing employee_id.
 ```sql
 SELECT e1.employee_name AS Employee, e2.employee_name AS Manager
 FROM employees e1
@@ -153,3 +153,10 @@ SELECT MAX(salary) AS SecondHighestSalary
 FROM employees
 WHERE salary < (SELECT MAX(salary) FROM employees);
 ```
+17. 🟥 Retrieve all employees and their department names. If an employee does not belong to a department, show NULL for the department name.
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+LEFT JOIN departments ON employees.department_id = departments.department_id;
+```
+**Explanation**: This query retrieves all employees, including those who are not assigned to a department. For those without a department, the department_name will be NULL.

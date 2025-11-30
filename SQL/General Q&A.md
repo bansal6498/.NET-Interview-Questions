@@ -2,7 +2,7 @@
 -   WHERE: Used to filter rows before grouping.
 -   HAVING: Used to filter rows after grouping. It is applied to the aggregated data.
 
-**Example-**
+#### Example
 ```sql 
 SELECT department, COUNT(*)
 FROM employees
@@ -21,19 +21,41 @@ HAVING COUNT(*) > 5;
 A `PRIMARY KEY` is a constraint that uniquely identifies each record in a table. It ensures that the column(s) it is applied to do not have `NULL` values and are unique across all rows.
 -   A table can have only one `PRIMARY KEY`.
 -   It automatically creates a unique index on the column.
-
-**Example-**
+#### Example
 ```sql
 CREATE TABLE employees (
  employee_id INT PRIMARY KEY,
  name VARCHAR(100)
 );
 ```
+#### What is a primary key in SQL?
+**Answer:**
+A primary key is a column or a combination of columns that uniquely identifies each row in a table. Primary keys must contain unique values and cannot contain NULLs. When a primary key is defined, a unique index is automatically created on the primary key column(s).
+#### Example
+```sql
+CREATE TABLE Employees (
+    EmployeeId INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+```
+#### What is a foreign key in SQL?
+**Answer:**
+A foreign key is a column or a combination of columns that establishes a link between the data in two tables. It enforces referential integrity by ensuring that the value in the foreign key column exists in the referenced primary key column of another table.
+#### Example
+```sql
+CREATE TABLE Orders (
+    OrderId INT PRIMARY KEY,
+    OrderDate DATE,
+    EmployeeId INT,
+    FOREIGN KEY (EmployeeId) REFERENCES Employees(EmployeeId)
+);
+```
 ## UNION vs UNION ALL
 -   `UNION`: Combines the result sets of two or more queries and removes duplicate rows.
 -   `UNION ALL`: Combines the result sets of two or more queries, but does not remove duplicates.
 
-**Example-**
+#### Example
 ```sql
 SELECT name FROM employees WHERE department = 'IT'
 UNION
@@ -76,3 +98,13 @@ Aggregate functions perform a calculation on a set of values and return a single
 ```sql
 SELECT department, AVG(salary) FROM employees GROUP BY department;
 ```
+#### What is the difference between SQL and NoSQL databases?
+**Answer:**
+-   **SQL**: Relational, structured schema, uses tables/joins (e.g., SQL Server, PostgreSQL).
+-   **NoSQL**: Non-relational, flexible schema, stores JSON/documents/graphs (e.g., MongoDB, Cassandra).
+#### In which scenarios would you prefer NoSQL over SQL?
+**Answer:**
+-   Large-scale, unstructured data.
+-   Schema flexibility (rapid iterations).
+-   High write scalability.
+-   Examples: Real-time analytics, IoT data, social media feeds.
