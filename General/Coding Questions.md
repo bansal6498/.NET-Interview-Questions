@@ -125,3 +125,77 @@ Enter second number: 10
 Before swapping: num1 = 5, num2 = 10
 After swapping: num1 = 10, num2 = 5
 ```
+### LINQ for Duplicates
+```csharp
+var duplicates = arr.GroupBy(x => x)
+                    .Where(g => g.Count() > 1)
+                    .Select(g => g.Key);
+```
+### Reverse Linked List
+```csharp
+Node prev = null, curr = head;
+while(curr != null) {
+    var next = curr.Next;
+    curr.Next = prev;
+    prev = curr;
+    curr = next;
+}
+head = prev;
+```
+### First Non-Repeating Character
+```csharp
+var ch = str.GroupBy(c => c)
+            .Where(g => g.Count() == 1)
+            .Select(g => g.Key)
+            .FirstOrDefault();
+```
+### Pagination with EF Core
+```csharp
+var pageSize = 10;
+var data = db.Users
+             .Skip((page-1)*pageSize)
+             .Take(pageSize)
+             .ToList();
+```
+#### Write a C# code you have a string "Priyanshu Bansal" Write it in reverse order but if the alphabet is vowel then it should print as Capital and if it is a consonent it should print as lower case and space should be as it is.
+**Answer:**
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        string input = "Priyanshu Bansal";
+        string result = ReverseWithCustomCase(input);
+        Console.WriteLine(result);
+    }
+
+    static string ReverseWithCustomCase(string input)
+    {
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+        string reversed = new string(input.Reverse().ToArray());
+
+        char[] output = new char[reversed.Length];
+        for (int i = 0; i < reversed.Length; i++)
+        {
+            char currentChar = reversed[i];
+            if (vowels.Contains(char.ToLower(currentChar)))
+            {
+                output[i] = char.ToUpper(currentChar);
+            }
+            else if (char.IsLetter(currentChar))
+            {
+                output[i] = char.ToLower(currentChar);
+            }
+            else
+            {
+                output[i] = currentChar; // Keep spaces as they are
+            }
+        }
+
+        return new string(output);
+    }
+}
+```
