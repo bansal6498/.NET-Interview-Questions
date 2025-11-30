@@ -92,3 +92,79 @@ public void ConfigureServices(IServiceCollection services)
 ### Conclusion
 -   Service Lifetimes in .NET Core (Transient, Scoped, Singleton) help control how services are created and managed, optimizing performance and memory usage.
 -   Dependency Injection helps to decouple the application components, making it easier to manage dependencies, test components in isolation, and achieve more maintainable code. It is a core part of ASP.NET Core and enables the development of scalable and flexible applications.
+#### 🟥 How dependency injection is handled in .NET Core (including .NET 8) and .NET Framework (such as .NET 4)?
+**Answer:**
+#### .NET Core (including .NET 8)
+1.  Built-in Dependency Injection:
+    -   .NET Core has built-in support for dependency injection (DI). It provides a simple, built-in container that is easy to use and configure.
+    -   Services are registered in the Startup class, specifically in the ConfigureServices method.
+2.  Service Lifetimes:
+    -   .NET Core supports three primary service lifetimes: Transient, Scoped, and Singleton.
+        -   Transient: Created each time they are requested.
+        -   Scoped: Created once per request.
+        -   Singleton: Created the first time they are requested and shared throughout the application's lifetime.
+3.  Service Registration:
+    -   Services are typically registered in the ConfigureServices method using the IServiceCollection interface.</br>
+
+    Example
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddTransient<IMyService, MyService>();
+        services.AddScoped<IMyScopedService, MyScopedService>();
+        services.AddSingleton<IMySingletonService, MySingletonService>();
+    }
+    ```
+4.  Constructor Injection:
+    -   .NET Core primarily uses constructor injection, where dependencies are provided through a class's constructor.
+#### .NET Framework (such as .NET 4)
+1.  No Built-in Dependency Injection:
+    -   The .NET Framework does not have built-in dependency injection. Developers typically use third-party libraries such as Autofac, Ninject, Unity, or Castle Windsor.
+2.  Service Registration:
+    -   Service registration varies depending on the DI container being used. Each third-party library has its own syntax and configuration methods.
+3.  Service Lifetimes:
+    -   The concept of service lifetimes exists, but the terminology and implementation details can vary between DI containers.
+    -   For example, Autofac uses InstancePerDependency for transient, `InstancePerLifetimeScope` for scoped, and SingleInstance for singleton.
+4.  Configuration:`
+    -   Configuration can be done through code, configuration files, or both, depending on the DI container used.
+5.  Dependency Injection in MVC and Web API:
+    -   ASP.NET MVC and Web API require additional setup to integrate DI, such as creating a custom dependency resolver.
+    #### Example
+    ```csharp
+    // In Global.asax or Startup class
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        protected void Application_Start()
+        {
+            var builder = new ContainerBuilder();
+
+            // Register services
+            builder.RegisterType<MyService>().As<IMyService>().InstancePerDependency();
+            builder.RegisterType<MyScopedService>().As<IMyScopedService>().InstancePerRequest();
+            builder.RegisterType<MySingletonService>().As<IMySingletonService>().SingleInstance();
+
+            var container = builder.Build();
+            
+            // Set MVC DependencyResolver
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            // Set Web API DependencyResolver
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+        }
+    }
+    ```
+    #### Summary
+    -   .NET Core has built-in DI with a straightforward registration and configuration process.
+    -   .NET Framework relies on third-party DI containers with more complex setup and integration.
+    -   Service lifetimes and registration are simpler and more standardized in .NET Core.
+#### How do you handle dependency injection in .NET Core?
+**Answer:**
+In .NET Core, dependency injection is a built-in feature that is configured in the Startup class within the ConfigureServices method. I register services with various lifetimes (Transient, Scoped, Singleton) depending on the application's requirements. For example:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddTransient<IMyService, MyService>();
+    services.AddScoped<IMyScopedService, MyScopedService>();
+    services.AddSingleton<IMySingletonService, MySingletonService>();
+}
+```

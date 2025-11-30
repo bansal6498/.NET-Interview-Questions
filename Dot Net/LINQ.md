@@ -178,3 +178,24 @@ var result = numbers.ToList();
 ### Take() vs Skip()
 -   `Take()` retrieves the first n elements.
 -   `Skip()` skips the first n elements and returns the rest.
+### Pagination with EF Core
+```csharp
+var pageSize = 10;
+var data = db.Users
+             .Skip((page-1)*pageSize)
+             .Take(pageSize)
+             .ToList();
+```
+### First Non-Repeating Character
+```csharp
+var ch = str.GroupBy(c => c)
+            .Where(g => g.Count() == 1)
+            .Select(g => g.Key)
+            .FirstOrDefault();
+```
+### LINQ for Duplicates
+```csharp
+var duplicates = arr.GroupBy(x => x)
+                    .Where(g => g.Count() > 1)
+                    .Select(g => g.Key);
+```

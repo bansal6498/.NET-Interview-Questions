@@ -54,7 +54,8 @@ logger.LogInformation("Application started");
 Printing is more of a temporary or debugging feature, whereas logging is a structured and persistent record of events or activities in an application.
 ### Value Types vs Reference Types
 **Value Types** These types hold data directly and are stored on the stack. Examples include `int, double, char, struct.`
--   When a value type is assigned to another variable, a copy of the data is made.
+-   When a value type is assigned to another variable, a copy of the data is made.</br>
+
 **Reference Types** These types store a reference (or pointer) to the actual data, which is stored on the heap. Examples include `class`, `string`, `array`, `delegate`.
 -   When a reference type is assigned to another variable, both variables point to the same memory location, so changes to one will affect the other.
 ### Out vs Ref
@@ -194,4 +195,71 @@ arrayList.Add(true);
 Console.WriteLine(arrayList[0]); // Output: 1
 Console.WriteLine(arrayList[1]); // Output: Hello
 ```
+### Boxing vs Unboxing
+**Boxing** : Converting a value type to a reference type (object or interface). Stored in the heap.
+```csharp
+int x = 10;
+object obj = x; // boxing
+```
+**Unboxing**: Extracting the value type from an object.
+```csharp
+int y = (int)obj; // unboxing
+```
+⚠️ Unboxing requires explicit cast and is costly in performance.
+### Equals() vs == 
+**==**: Operator. Default for reference types compares **reference equality** (except for string, where it checks value).</br>
+**Equals()** : Virtual method. Can be overridden for **value equality** (e.g., struct, string, custom classes).
+### Generics
+Provide **type safety** without boxing/unboxing.</br>
+Common pitfalls:
+-   Overuse leads to complexity.
+-   Value type constraints → boxing if not handled properly.
+-   Can’t use `null` with value type generics without `Nullable<T>`.
+### Records
+Introduced in C# 9.</br>
+**Immutable reference types** with value-based equality.
+#### record vs class:
+-   Class → reference equality by default.
+-   Record → value equality (compares properties).</br>
 
+Good for DTOs and immutable data models.
+### Task vs Thread vs ThreadPool
+-   **Thread** → OS-level thread, heavy.
+-   **ThreadPool** → Managed pool of reused threads.
+-   **Task** → Higher-level abstraction on ThreadPool with cancellation, continuations, async support.
+### foreach vs Parallel.ForEach
+-   **foreach** → Sequential iteration.
+-   **Parallel.ForEach** → Splits work across threads, good for CPU-bound tasks. Avoid if tasks are I/O bound.
+#### What is the Default Access Modifier of Class in C#?
+**Answer:**</br>
+Top-level class / abstract class → **internal** by default.</br>
+Nested class → **private** by default.
+1.  For a top-level class (including abstract class):
+    -   The default access modifier is internal.
+    -   Meaning: accessible only within the same assembly/project.
+    #### 🧩 Example    
+    ```csharp
+    abstract class MyAbstractClass { }  // 👈 internal by default
+    class MyClass { }                   // 👈 internal by default
+    ```
+    Equivalent to
+    ```csharp
+    internal abstract class MyAbstractClass { }
+    internal class MyClass { }
+    ```
+2.  For a nested class (inside another class):
+    -   The default access modifier is private.
+    -   Meaning: only accessible inside the containing class.
+    ```csharp
+    class Outer
+    {
+        class Inner { }  // 👈 private by default
+    }
+    ```
+    Equivalent to
+    ```csharp
+    class Outer
+    {
+        private class Inner { }
+    }
+    ```

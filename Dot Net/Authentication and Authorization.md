@@ -126,3 +126,73 @@ Token theft, expiration handling, and secure storage of tokens (e.g., in localSt
 -   Use role-based or claim-based authorization for fine-grained access control
 ### Conclusion
 Authentication and authorization are essential components of securing an application, and .NET provides multiple ways to handle them. JWT offers a flexible and scalable way to authenticate users in modern web applications. By understanding the differences between authentication and authorization and mastering the implementation of JWT, developers can build secure, scalable applications.
+#### What is ASP.NET Identity?
+**Answer:**
+ASP.NET Identity is the membership system (framework) provided by Microsoft to manage authentication and authorization in ASP.NET and ASP.NET Core applications. It replaces the older Membership and SimpleMembership systems.</br>
+ASP.NET Identity is Microsoft’s framework for handling user authentication, authorization, roles, and claims in ASP.NET applications. It supports both local logins and external providers, integrates with Entity Framework by default, and includes modern security features like password hashing, 2FA, and account lockout.
+#### Key Features
+1.  Authentication & Authorization
+    -   Manages user login, roles, and claims.
+    -   Supports cookie-based authentication, JWT, OAuth, OpenID Connect.
+2.  Customizable User Store
+    -   By default, stores users in a SQL Server DB using Entity Framework.
+    -   You can replace with NoSQL, Azure Table Storage, or your own DB.
+3.  Role & Claims-based Security
+    -   Assign users to roles (Admin, Manager).
+    -   Use claims (HasClaim("Department", "Finance")) for fine-grained control.
+4.  External Logins
+    -   Supports Google, Facebook, Twitter, Microsoft login, etc.
+5.  Security Features
+    -   Password hashing & salting.
+    -   Two-Factor Authentication (2FA).
+    -   Account lockout, password reset, email confirmation.
+#### 🧩 Example
+```csharp
+// In Program.cs / Startup.cs
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+```
+#### How do you implement authentication and authorization in ASP.NET Core?
+**Answer:**
+n ASP.NET Core, I use the built-in authentication and authorization mechanisms. For authentication, I often use JWT (JSON Web Tokens) for stateless authentication. I configure the authentication middleware in `Startup.cs` like this:
+#### 🧩 Example
+
+For authorization, I use roles and policies to restrict access to certain parts of the application. I annotate controllers or actions with the `[Authorize]` attribute and specify the required policy or role.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    });
+
+    services.AddControllers();
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+}
+```

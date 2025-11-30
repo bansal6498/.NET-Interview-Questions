@@ -48,3 +48,64 @@ To handle unmanaged resources, implement the `IDisposable` interface and use `Di
     -   Call `GC.SuppressFinalize(this)` within Dispose to optimize resource cleanup.
 4. **Finalize Only When Necessary:**
     -   Use Finalize only if your class deals with unmanaged resources and does not expose Dispose.
+#### How does mamory management works in this case? 
+```csharp
+public static void Main(String[] args) { 
+    int x = 10; 
+    String name = "C#"; 
+    String name2 = "C#"; 
+    String name3 = new string(name); 
+    display(x, name); 
+    } 
+    public static void display(int number, String text) { 
+        System.Console.WriteLine("Number: " + number); 
+        System.Console.WriteLine("Text: " + text);
+```
+**Answer:**
+This example mixes **value types (int)** and **reference types (string)**, so let’s break down what happens in memory management step by step.
+1.  int x = 10;
+    -   int is a **value type**.
+    -   Stored **directly on the stack** (inside the Main method’s stack frame).
+    -   So, x contains the value 10.
+2. String name = "C#";
+    -   "C#" is a **string literal**.
+    -   String literals are stored in the **intern pool** (a special area in the managed heap maintained by the CLR).
+    -   name (the variable) is on the **stack**, but it **points to the interned string object** on the **heap**.
+3. String name2 = "C#";
+    -   "C#" already exists in the **intern pool**.
+    -   Instead of creating a new object, name2 will **reference the same heap object** as name.
+    -   So name and name2 point to the **same memory location**.
+4. String name3 = new string(name);
+    -   new string(name) explicitly asks for a **new object**.
+    -   Even though the content is "C#", this is **not interned** automatically.
+    -   So a **new string object** is allocated on the **heap**, and name3 references it.
+5. Calling display(x, name);
+    -   x (10) is a **value type**, passed **by value** → a **copy** of 10 goes into number (stack).
+    -   name (a reference to "C#") is a **reference type**, passed **by value** → a **copy of the reference** is given to text.
+        -   That means both name (in Main) and text (in display) point to the **same heap object** "C#".
+
+📌 Memory Snapshot</br>
+Stack (Main Frame)
+```csharp
+x = 10
+name → reference to interned "C#"
+name2 → reference to interned "C#"
+name3 → reference to new "C#"
+```
+Heap
+```csharp
+Intern Pool:  "C#"
+Heap Object:  "C#" (new string, different from interned one)
+```
+Stack (Display Frame)
+```csharp
+number = 10
+text → reference to interned "C#"
+```
+### 🔑 Key Points of Memory Management
+
+-   Value types (`int`) live on the stack (copied when passed).
+-   Reference types (`string`) store the reference on the stack, object itself lives on the heap.
+-   String interning ensures literals like `"C#"` are stored once and reused.
+-   `new string(...)` forces allocation of a s**eparate object**, bypassing interning.
+-   Garbage Collector (GC) will eventually free `name3` (since it’s not interned), but interned strings live for the lifetime of the application domain.

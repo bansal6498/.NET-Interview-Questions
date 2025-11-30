@@ -12,3 +12,36 @@ public struct Point
  public int Y;
 }
 ```
+#### What is the Default Access Modifier of Class in C#?
+**Answer:**</br>
+Top-level class / abstract class → **internal** by default.</br>
+Nested class → **private** by default.
+1.  For a top-level class (including abstract class):
+    -   The default access modifier is internal.
+    -   Meaning: accessible only within the same assembly/project.
+    #### 🧩 Example    
+    ```csharp
+    abstract class MyAbstractClass { }  // 👈 internal by default
+    class MyClass { }                   // 👈 internal by default
+    ```
+    Equivalent to
+    ```csharp
+    internal abstract class MyAbstractClass { }
+    internal class MyClass { }
+    ```
+2.  For a nested class (inside another class):
+    -   The default access modifier is private.
+    -   Meaning: only accessible inside the containing class.
+    ```csharp
+    class Outer
+    {
+        class Inner { }  // 👈 private by default
+    }
+    ```
+    Equivalent to
+    ```csharp
+    class Outer
+    {
+        private class Inner { }
+    }
+    ```
